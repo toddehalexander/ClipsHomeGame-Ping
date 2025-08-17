@@ -5,29 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Clippers Home Games</title>
   <link rel="stylesheet" href="styles.css" />
-    <script>
-    //window.DEV_OVERRIDE_NOW = '2025-11-30T02:59:00Z';
-    </script>
+  <script>
+    window.DEV_OVERRIDE_NOW = '2025-11-08T01:00:00Z';
+  </script>
 </head>
 <body>
   <main class="container fade-in">
     <header class="header">
       <h1>🏀 Clippers Home Games ₿</h1>
-      <p class="sub">2025–26 Season Schedule</p>
-      <a class="btn main-btn" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">
+      <p class="subtitle">2025–26 Season Schedule</p>
+      <a class="main-btn" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">
         Opt in on Coinbase
       </a>
     </header>
 
     <section id="game" class="card hidden">
+      <div class="game-label">Next Game</div>
       <h2 id="opponent"></h2>
       <p id="datetime"></p>
       <div id="countdown" class="countdown"></div>
     </section>
 
     <section id="future" class="card hidden">
-      <h3 id="future-title"></h3>
-      <ul id="future-list"></ul>
+      <h3 id="future-title">Upcoming Games</h3>
+      <ul id="future-list" class="games-list"></ul>
     </section>
 
     <footer class="footer">

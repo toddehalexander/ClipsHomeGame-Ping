@@ -9,8 +9,17 @@ const futureListEl = document.getElementById('future-list');
 
 function fmtDateTime(iso) {
   const d = new Date(iso);
-  const datePart = new Intl.DateTimeFormat('en-US', { timeZone: PT, weekday:'short', month:'short', day:'numeric' }).format(d);
-  const timePart = new Intl.DateTimeFormat('en-US', { timeZone: PT, hour:'numeric', minute:'2-digit' }).format(d);
+  const datePart = new Intl.DateTimeFormat('en-US', { 
+    timeZone: PT, 
+    weekday: 'short', 
+    month: 'short', 
+    day: 'numeric' 
+  }).format(d);
+  const timePart = new Intl.DateTimeFormat('en-US', { 
+    timeZone: PT, 
+    hour: 'numeric', 
+    minute: '2-digit' 
+  }).format(d);
   return `${datePart} • ${timePart} PT`;
 }
 
@@ -42,7 +51,7 @@ function clearCountdown() {
 /**
  * Starts a countdown timer to the target ISO datetime string
  * Updates countdownEl every second with remaining time.
- * Applies heartbeat pulse animation on update without flicker.
+ * Applies subtle pop animation on update.
  */
 function startCountdown(iso) {
   clearCountdown();
@@ -52,18 +61,14 @@ function startCountdown(iso) {
     const now = getNow();
     let diff = target - now.getTime();
 
-    if (diff <= 0) {
-      countdownEl.textContent = "Game started!";
-      countdownEl.classList.add('started');
-      clearCountdown();
-      return;
-    } else {
-      countdownEl.classList.remove('started');
-    }
+    if (diff < 0) diff = 0; // never negative
 
-    const ds = Math.floor(diff / 86400000); diff -= ds * 86400000;
-    const hs = Math.floor(diff / 3600000); diff -= hs * 3600000;
-    const ms = Math.floor(diff / 60000); diff -= ms * 60000;
+    const ds = Math.floor(diff / 86400000); 
+    diff -= ds * 86400000;
+    const hs = Math.floor(diff / 3600000); 
+    diff -= hs * 3600000;
+    const ms = Math.floor(diff / 60000); 
+    diff -= ms * 60000;
     const ss = Math.floor(diff / 1000);
 
     const dayPart = ds > 0 ? `${ds}d ` : '';
@@ -71,10 +76,8 @@ function startCountdown(iso) {
 
     if (countdownEl.textContent !== newText) {
       countdownEl.textContent = newText;
-
-      // Restart animation by removing and re-adding class
       countdownEl.classList.remove('pop');
-      void countdownEl.offsetWidth;  // Trigger reflow
+      void countdownEl.offsetWidth;
       countdownEl.classList.add('pop');
     }
   }
@@ -100,7 +103,7 @@ async function main() {
     if (!upcoming.length) {
       gameEl.classList.add('hidden');
       futureEl.classList.add('hidden');
-      document.body.classList.remove('game-today'); // Remove if no upcoming game
+      document.body.classList.remove('game-today');
       return;
     }
 
@@ -108,23 +111,16 @@ async function main() {
     const tipISO = next.datetime || `${next.date}T00:00:00Z`;
     const gameDate = new Date(tipISO);
 
-    opponentEl.textContent = `Next Game: ${next.opponent} @ Clippers`;
+    opponentEl.textContent = `${next.opponent} @ Clippers`;
 
     if (isSameDayPT(now, gameDate)) {
       datetimeEl.textContent = "TODAY";
-      document.body.classList.add('game-today'); // Add class for today style
-      if (now.getTime() < gameDate.getTime()) {
-        startCountdown(tipISO);
-      } else {
-        countdownEl.textContent = "Game started!";
-        countdownEl.classList.add('started');
-        clearCountdown();
-      }
+      document.body.classList.add('game-today');
+      startCountdown(tipISO);
     } else {
       datetimeEl.textContent = fmtDateTime(tipISO);
-      document.body.classList.remove('game-today'); // Remove class if not today
+      document.body.classList.remove('game-today');
       startCountdown(tipISO);
-      countdownEl.classList.remove('started');
     }
 
     gameEl.classList.remove('hidden');
@@ -136,9 +132,14 @@ async function main() {
       futureEl.classList.remove('hidden');
       futureTitleEl.textContent = `Upcoming Home Games (${upcoming.length})`;
       futureListEl.innerHTML = '';
+      
       upcoming.forEach(g => {
         const li = document.createElement('li');
-        li.innerHTML = `<span>${g.opponent}</span><span>${fmtDateTime(g.datetime || g.date)}</span>`;
+        li.className = 'game-item';
+        li.innerHTML = `
+          <span class="opponent-name">${g.opponent}</span>
+          <span class="game-time">${fmtDateTime(g.datetime || g.date)}</span>
+        `;
         futureListEl.appendChild(li);
       });
     } else {
@@ -146,6 +147,9 @@ async function main() {
     }
   } catch (err) {
     console.error(err);
+    // Show error state but don't clutter with fallback data
+    gameEl.classList.add('hidden');
+    futureEl.classList.add('hidden');
   }
 }
 
