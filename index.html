@@ -3,36 +3,29 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Next Clippers Home Game</title>
+  <title>Clippers Home Games</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <main class="container fade-in">
     <header class="header">
-      <h1>
-        <span class="icon-ball">🏀</span>
-        Clippers Home Games
-        <span class="icon-btc">₿</span>
-      </h1>
+      <h1>🏀 Clippers Home Games ₿</h1>
       <p class="sub">Auto-updated schedule • 2025–26 Season</p>
+      <a class="btn main-btn" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">
+        Opt in on Coinbase
+      </a>
     </header>
 
-    <section id="status" class="card">
+    <section id="status" class="card hidden">
       <div id="loading" class="info">Loading schedule…</div>
       <div id="error" class="info hidden"></div>
+      <div id="no-games" class="info hidden">No upcoming home games found.</div>
+    </section>
 
-      <div id="game" class="hidden">
-        <h2 id="opponent"></h2>
-        <p id="datetime"></p>
-        <div id="countdown" class="countdown pulse"></div>
-        <a class="btn" id="coinbase" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">
-          Opt in on Coinbase
-        </a>
-      </div>
-
-      <div id="no-games" class="info hidden">
-        <p>No upcoming home games found.</p>
-      </div>
+    <section id="game" class="card hidden">
+      <h2 id="opponent"></h2>
+      <p id="datetime"></p>
+      <div id="countdown" class="countdown"></div>
     </section>
 
     <section id="future" class="card hidden">
@@ -41,7 +34,7 @@
     </section>
 
     <footer class="footer">
-      <p>Data: BallDontLie NBA API • Times shown in Pacific Time</p>
+      <p>Data: BallDontLie NBA API • Times in Pacific Time</p>
     </footer>
   </main>
 

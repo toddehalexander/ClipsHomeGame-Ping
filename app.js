@@ -1,8 +1,9 @@
 const PT = 'America/Los_Angeles';
+const statusEl = document.getElementById('status');
 const loadingEl = document.getElementById('loading');
 const errorEl = document.getElementById('error');
-const gameEl = document.getElementById('game');
 const noGamesEl = document.getElementById('no-games');
+const gameEl = document.getElementById('game');
 const opponentEl = document.getElementById('opponent');
 const datetimeEl = document.getElementById('datetime');
 const countdownEl = document.getElementById('countdown');
@@ -28,36 +29,36 @@ function startCountdown(iso) {
     countdownEl.textContent = `${ds}d ${hs}h ${ms}m ${ss}s`;
   }
   tick();
-  return setInterval(tick, 1000);
+  setInterval(tick, 1000);
 }
 
 async function main() {
   try {
     const res = await fetch('data/games.json', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`Failed to load schedule`);
+    if (!res.ok) throw new Error('Failed to load schedule');
     const data = await res.json();
 
     const now = Date.now();
     const upcoming = (data.homeGames || []).filter(
       g => new Date(g.datetime || `${g.date}T00:00:00Z`).getTime() >= now
     );
+
     if (!upcoming.length) {
-      loadingEl.classList.add('hidden');
       noGamesEl.classList.remove('hidden');
+      statusEl.classList.remove('hidden');
       return;
     }
 
-    // Next game
+    // Show next game
     const next = upcoming[0];
     const tipISO = next.datetime || `${next.date}T00:00:00Z`;
     opponentEl.textContent = `${next.opponent} @ Clippers`;
     datetimeEl.textContent = fmtDateTime(tipISO);
 
-    loadingEl.classList.add('hidden');
     gameEl.classList.remove('hidden');
     startCountdown(tipISO);
 
-    // Future games list
+    // Show future games
     if (upcoming.length > 1) {
       futureEl.classList.remove('hidden');
       futureListEl.innerHTML = '';
@@ -68,8 +69,8 @@ async function main() {
       });
     }
   } catch (err) {
-    loadingEl.classList.add('hidden');
     errorEl.textContent = `Error: ${err.message}`;
+    statusEl.classList.remove('hidden');
     errorEl.classList.remove('hidden');
   }
 }
