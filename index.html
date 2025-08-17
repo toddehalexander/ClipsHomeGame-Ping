@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Next Clippers Home Game</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="See the next Los Angeles Clippers home game and a countdown to tip-off." />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Next <span class="lac">Clippers</span> Home Game</h1>
+      <p class="sub">2025–26 season • auto-updating</p>
+    </header>
+
+    <section id="status" class="card">
+      <div id="loading">Loading schedule…</div>
+      <div id="error" class="hidden"></div>
+
+      <div id="game" class="hidden">
+        <h2 id="opponent"></h2>
+        <p id="datetime"></p>
+        <div id="countdown" class="countdown"></div>
+        <a class="btn" id="coinbase" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">Opt in on Coinbase</a>
+      </div>
+
+      <div id="no-games" class="hidden">
+        <p>No upcoming home games found for this season.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Data: BallDontLie NBA API (season 2025). Times shown in Pacific Time.
+      </p>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

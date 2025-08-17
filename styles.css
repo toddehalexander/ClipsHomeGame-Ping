@@ -1,0 +1,17 @@
+:root { --bg:#0b0f14; --card:#121821; --text:#e6edf3; --muted:#9fb3c8; --accent:#1f6feb; --green:#2ea043; }
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#081018 0%,#0b0f14 100%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+.wrap{max-width:680px;margin:48px auto;padding:0 16px}
+header{margin-bottom:16px}
+h1{font-size:28px;margin:0 0 4px}
+.lac{color:#e11d48}
+.sub{color:var(--muted);margin:0 0 24px}
+.card{background:var(--card);padding:24px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+h2{margin:0 0 8px;font-size:24px}
+#datetime{color:var(--muted);margin:0 0 16px}
+.countdown{font-size:20px;font-weight:600;margin:8px 0 20px}
+.btn{display:inline-block;background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none}
+.btn:hover{filter:brightness(1.1)}
+#loading,#error,#no-games{padding:8px 0}
+.hidden{display:none}
+footer{margin:14px 0;color:var(--muted);font-size:14px}
