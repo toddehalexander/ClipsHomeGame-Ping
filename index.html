@@ -5,35 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Next Clippers Home Game</title>
   <link rel="stylesheet" href="styles.css" />
-  <meta name="description" content="See the next Los Angeles Clippers home game and a countdown to tip-off." />
 </head>
 <body>
-  <main class="wrap">
-    <header>
-      <h1>Next <span class="lac">Clippers</span> Home Game</h1>
-      <p class="sub">2025–26 season • auto-updating</p>
+  <main class="container fade-in">
+    <header class="header">
+      <h1>
+        <span class="icon-ball">🏀</span>
+        Clippers Home Games
+        <span class="icon-btc">₿</span>
+      </h1>
+      <p class="sub">Auto-updated schedule • 2025–26 Season</p>
     </header>
 
     <section id="status" class="card">
-      <div id="loading">Loading schedule…</div>
-      <div id="error" class="hidden"></div>
+      <div id="loading" class="info">Loading schedule…</div>
+      <div id="error" class="info hidden"></div>
 
       <div id="game" class="hidden">
         <h2 id="opponent"></h2>
         <p id="datetime"></p>
-        <div id="countdown" class="countdown"></div>
-        <a class="btn" id="coinbase" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">Opt in on Coinbase</a>
+        <div id="countdown" class="countdown pulse"></div>
+        <a class="btn" id="coinbase" href="https://www.coinbase.com/sweepstakes/clippers" target="_blank" rel="noopener">
+          Opt in on Coinbase
+        </a>
       </div>
 
-      <div id="no-games" class="hidden">
-        <p>No upcoming home games found for this season.</p>
+      <div id="no-games" class="info hidden">
+        <p>No upcoming home games found.</p>
       </div>
     </section>
 
-    <footer>
-      <p>
-        Data: BallDontLie NBA API (season 2025). Times shown in Pacific Time.
-      </p>
+    <section id="future" class="card hidden">
+      <h3>Upcoming Home Games</h3>
+      <ul id="future-list"></ul>
+    </section>
+
+    <footer class="footer">
+      <p>Data: BallDontLie NBA API • Times shown in Pacific Time</p>
     </footer>
   </main>
 
