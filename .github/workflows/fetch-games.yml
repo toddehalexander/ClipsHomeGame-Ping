@@ -3,7 +3,7 @@ name: Update Clippers Home Games
 on:
   workflow_dispatch: {}
   schedule:
-    - cron: "0 12 * * *"  # daily at 12:00 UTC (5:00 AM PT during PDT)
+    - cron: "0 12 * * 1"  # every Monday at 12:00 UTC (5:00 AM PT during PDT)
 
 permissions:
   contents: write
