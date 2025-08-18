@@ -1,6 +1,6 @@
 # 🏀 Clippers Home Games ₿
 
-A simple web page showing the **next home game** for the Los Angeles Clippers and **upcoming games**.  
+A simple web page showing the **next home game** for the Los Angeles Clippers and **upcoming games**.   
 
 🌐 **Check it out here:** [Clippers Home Games](https://toddehalexander.github.io/ClipsHomeGame-Ping/)
 
