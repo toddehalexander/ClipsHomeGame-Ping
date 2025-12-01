@@ -2,7 +2,7 @@
   "teamId": 13,
   "team": "Los Angeles Clippers",
   "season": 2025,
-  "generatedAt": "2025-11-24T12:37:14.187Z",
+  "generatedAt": "2025-12-01T12:38:26.646Z",
   "homeGames": [
     {
       "id": 18446846,
@@ -92,7 +92,7 @@
       "opponent_abbr": "MEM",
       "home_team": "LA Clippers",
       "season": 2025,
-      "status": "2025-11-29T03:00:00Z"
+      "status": "Final"
     },
     {
       "id": 18447109,
@@ -102,7 +102,17 @@
       "opponent_abbr": "DAL",
       "home_team": "LA Clippers",
       "season": 2025,
-      "status": "2025-11-30T03:00:00Z"
+      "status": "Final"
+    },
+    {
+      "id": 20054979,
+      "date": "2025-12-15",
+      "datetime": "2025-12-16T03:30:00.000Z",
+      "opponent": "Memphis Grizzlies",
+      "opponent_abbr": "MEM",
+      "home_team": "LA Clippers",
+      "season": 2025,
+      "status": "2025-12-16T03:30:00Z"
     },
     {
       "id": 18447204,
