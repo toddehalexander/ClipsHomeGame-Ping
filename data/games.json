@@ -2,7 +2,7 @@
   "teamId": 13,
   "team": "Los Angeles Clippers",
   "season": 2025,
-  "generatedAt": "2026-01-05T12:41:31.102Z",
+  "generatedAt": "2026-01-12T12:42:10.968Z",
   "homeGames": [
     {
       "id": 18446846,
@@ -182,7 +182,7 @@
       "opponent_abbr": "GSW",
       "home_team": "LA Clippers",
       "season": 2025,
-      "status": "2026-01-06T03:00:00Z"
+      "status": "Final"
     },
     {
       "id": 18447377,
