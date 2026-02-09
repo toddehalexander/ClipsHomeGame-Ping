@@ -2,7 +2,7 @@
   "teamId": 13,
   "team": "Los Angeles Clippers",
   "season": 2025,
-  "generatedAt": "2026-02-02T12:55:02.658Z",
+  "generatedAt": "2026-02-09T13:03:33.071Z",
   "homeGames": [
     {
       "id": 18446846,
@@ -232,7 +232,7 @@
       "opponent_abbr": "PHI",
       "home_team": "LA Clippers",
       "season": 2025,
-      "status": "2026-02-03T03:00:00Z"
+      "status": "Final"
     },
     {
       "id": 18447550,
@@ -242,7 +242,7 @@
       "opponent_abbr": "CLE",
       "home_team": "LA Clippers",
       "season": 2025,
-      "status": "2026-02-05T03:30:00Z"
+      "status": "Final"
     },
     {
       "id": 18447619,
